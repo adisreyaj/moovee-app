@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 11:28:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 13th May 2020 11:54:38 pm
+ * Last Modified: Saturday, 23rd May 2020 11:00:11 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -15,7 +15,11 @@ import { colors } from '../../config/colors';
 
 export default function PrimaryButton() {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {}}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={styles.button}
+      onPress={() => {}}
+    >
       <Text style={{ color: '#fff', fontSize: 16 }}>Learn More</Text>
     </TouchableOpacity>
   );
