@@ -4,14 +4,20 @@
  * File Created: Monday, 25th May 2020 4:00:43 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:08:31 pm
+ * Last Modified: Monday, 25th May 2020 10:57:49 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import React, { useState, useRef } from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  Animated,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../config/colors';
 
 enum BottomNavbarItems {
@@ -26,16 +32,25 @@ export default function BottomNavbar() {
     BottomNavbarItems.home
   );
 
+  const menuItemAnimation = useRef(new Animated.Value(0)).current;
+
   const changeMenuSelection = (selection: BottomNavbarItems) => {
     setCurrentSelection(selection);
+    Animated.timing(menuItemAnimation, {
+      toValue: 1,
+      duration: 2000,
+    }).start();
   };
 
   const getMenuItemTextColor = (selection: BottomNavbarItems) => {
     return selection === currentSelection ? '#fff' : COLORS.textSecondary;
   };
-  const getMenuItemColor = (selection: BottomNavbarItems) => {
+  const getMenuItemStyles = (selection: BottomNavbarItems) => {
     return selection === currentSelection
-      ? { ...styles.menuItem, ...styles.menuItemActive }
+      ? {
+          ...styles.menuItem,
+          ...styles.menuItemActive,
+        }
       : styles.menuItem;
   };
   return (
@@ -46,7 +61,7 @@ export default function BottomNavbar() {
         underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.home)}
       >
-        <View style={getMenuItemColor(BottomNavbarItems.home)}>
+        <Animated.View style={getMenuItemStyles(BottomNavbarItems.home)}>
           <Ionicons
             name="md-home"
             size={24}
@@ -55,7 +70,7 @@ export default function BottomNavbar() {
           {currentSelection === BottomNavbarItems.home ? (
             <Text style={styles.menuItemLabel}>{BottomNavbarItems.home}</Text>
           ) : null}
-        </View>
+        </Animated.View>
       </TouchableHighlight>
 
       <TouchableHighlight
@@ -64,7 +79,7 @@ export default function BottomNavbar() {
         underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.favorites)}
       >
-        <View style={getMenuItemColor(BottomNavbarItems.favorites)}>
+        <Animated.View style={getMenuItemStyles(BottomNavbarItems.favorites)}>
           <Ionicons
             name="md-heart"
             size={24}
@@ -75,7 +90,7 @@ export default function BottomNavbar() {
               {BottomNavbarItems.favorites}
             </Text>
           ) : null}
-        </View>
+        </Animated.View>
       </TouchableHighlight>
 
       <TouchableHighlight
@@ -84,7 +99,7 @@ export default function BottomNavbar() {
         underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.explore)}
       >
-        <View style={getMenuItemColor(BottomNavbarItems.explore)}>
+        <Animated.View style={getMenuItemStyles(BottomNavbarItems.explore)}>
           <Ionicons
             name="ios-apps"
             size={24}
@@ -95,7 +110,7 @@ export default function BottomNavbar() {
               {BottomNavbarItems.explore}
             </Text>
           ) : null}
-        </View>
+        </Animated.View>
       </TouchableHighlight>
       <TouchableHighlight
         style={styles.menuItemContainer}
@@ -103,7 +118,7 @@ export default function BottomNavbar() {
         underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.settings)}
       >
-        <View style={getMenuItemColor(BottomNavbarItems.settings)}>
+        <Animated.View style={getMenuItemStyles(BottomNavbarItems.settings)}>
           <Ionicons
             name="md-settings"
             size={24}
@@ -114,7 +129,7 @@ export default function BottomNavbar() {
               {BottomNavbarItems.settings}
             </Text>
           ) : null}
-        </View>
+        </Animated.View>
       </TouchableHighlight>
     </View>
   );
@@ -146,6 +161,7 @@ const styles = StyleSheet.create({
   },
   menuItemActive: {
     backgroundColor: COLORS.accent,
+    borderRadius: 60,
   },
   menuItemLabel: {
     textTransform: 'capitalize',
