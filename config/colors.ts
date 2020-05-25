@@ -4,13 +4,14 @@
  * File Created: Wednesday, 13th May 2020 9:42:33 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 13th May 2020 9:44:24 pm
+ * Last Modified: Monday, 25th May 2020 10:07:34 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-export const colors = {
+export const COLORS = {
   primary: '#120d31',
+  accent: '#659000',
   textPrimary: '#000',
   textSecondary: '#959595',
 };

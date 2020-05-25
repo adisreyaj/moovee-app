@@ -4,14 +4,14 @@
  * File Created: Wednesday, 13th May 2020 11:28:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 1:28:19 am
+ * Last Modified: Monday, 25th May 2020 9:40:35 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { colors } from '../../config/colors';
+import { COLORS } from '../../config/colors';
 
 export default function PrimaryButton() {
   return (
@@ -27,7 +27,7 @@ export default function PrimaryButton() {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.primary,
+    backgroundColor: COLORS.primary,
     paddingHorizontal: 16,
     borderRadius: 4,
     paddingVertical: 10,

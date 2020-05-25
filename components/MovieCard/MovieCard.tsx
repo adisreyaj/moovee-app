@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 11:19:24 am
+ * Last Modified: Monday, 25th May 2020 10:13:05 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -12,14 +12,14 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../../config/colors';
+import { COLORS } from '../../config/colors';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 export default function MovieCard({ data }: any) {
   return (
     <View style={styles.movieCard}>
       <Image
-        resizeMode={'contain'}
+        resizeMode={'cover'}
         source={{
           width: 300,
           height: 300,
@@ -59,19 +59,19 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   title: {
-    color: colors.textPrimary,
+    color: COLORS.textPrimary,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 8,
     marginBottom: 8,
   },
   date: {
-    color: colors.textSecondary,
+    color: COLORS.textSecondary,
     fontSize: 16,
     marginBottom: 4,
   },
   rating: {
-    color: colors.textSecondary,
+    color: COLORS.textSecondary,
     fontSize: 16,
     marginLeft: 2,
   },

@@ -4,7 +4,7 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 11:27:42 am
+ * Last Modified: Monday, 25th May 2020 10:20:11 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import MovieContainer from '../components/MovieContainer/MovieContainer';
 import { View, Text, StyleSheet } from 'react-native';
 import SearchBar from '../components/Search/Search';
-import { colors } from '../config/colors';
+import { COLORS } from '../config/colors';
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,7 +28,7 @@ export default function HomePage() {
         alignItems: 'center',
       }}
     >
-      <Text style={styles.welcomeText}>Welcome Adithya</Text>
+      <Text style={styles.welcomeText}>Hi Maicy,</Text>
       <Text style={styles.welcomeTextSub}>
         Find and curate your favorite movies
       </Text>
@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
     marginTop: 24,
     fontWeight: '700',
     fontSize: 32,
-    color: colors.textPrimary,
+    color: COLORS.textPrimary,
   },
   welcomeTextSub: {
     textAlign: 'left',
     width: '100%',
     paddingHorizontal: 16,
     fontSize: 18,
-    color: colors.textSecondary,
+    color: COLORS.textSecondary,
   },
 });

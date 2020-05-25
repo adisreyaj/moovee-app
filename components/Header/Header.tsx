@@ -4,16 +4,14 @@
  * File Created: Wednesday, 13th May 2020 9:00:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 1:56:38 am
+ * Last Modified: Monday, 25th May 2020 10:19:45 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
 import { View, Image, StyleSheet, Platform, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-
-const Header = ({ openMenu }) => {
+const Header = ({}) => {
   return (
     <View style={styles.header}>
       <Image
@@ -21,7 +19,14 @@ const Header = ({ openMenu }) => {
         source={require('../../assets/icon.png')}
         style={styles.logo}
       />
-      <Ionicons name="md-menu" size={24} color="#000" onPress={openMenu} />
+
+      <View>
+        <Image
+          style={styles.avatar}
+          resizeMode={'cover'}
+          source={require('../../assets/avatar.jpg')}
+        />
+      </View>
     </View>
   );
 };
@@ -50,6 +55,12 @@ const styles = StyleSheet.create({
     width: 150,
     height: 60,
     resizeMode: 'contain',
+  },
+  avatar: {
+    borderRadius: 50,
+    overflow: 'hidden',
+    width: 60,
+    height: 60,
   },
 });
 

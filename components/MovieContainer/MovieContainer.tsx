@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:29:58 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 12:32:38 am
+ * Last Modified: Monday, 25th May 2020 3:52:52 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -50,6 +50,7 @@ export default function MovieContainer({
           backgroundColor: '#f7f7f7',
           paddingTop: 16,
           paddingBottom: 16,
+          flexGrow: 1,
         }}
         numColumns={2}
         data={movies}
