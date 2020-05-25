@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 11:28:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 23rd May 2020 11:00:11 pm
+ * Last Modified: Monday, 25th May 2020 1:28:19 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -28,7 +28,7 @@ export default function PrimaryButton() {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     borderRadius: 4,
     paddingVertical: 10,
     elevation: 6,

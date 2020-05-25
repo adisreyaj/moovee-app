@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 13th May 2020 11:47:51 pm
+ * Last Modified: Monday, 25th May 2020 11:19:24 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -56,10 +56,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 4,
     maxWidth: 250,
+    elevation: 0,
   },
   title: {
     color: colors.textPrimary,
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: '700',
     marginTop: 8,
     marginBottom: 8,

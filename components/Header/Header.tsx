@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:00:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 13th May 2020 11:27:32 pm
+ * Last Modified: Monday, 25th May 2020 1:56:38 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -13,7 +13,7 @@ import React from 'react';
 import { View, Image, StyleSheet, Platform, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const Header = () => {
+const Header = ({ openMenu }) => {
   return (
     <View style={styles.header}>
       <Image
@@ -21,7 +21,7 @@ const Header = () => {
         source={require('../../assets/icon.png')}
         style={styles.logo}
       />
-      <Ionicons name="md-menu" size={24} color="#000" />
+      <Ionicons name="md-menu" size={24} color="#000" onPress={openMenu} />
     </View>
   );
 };
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: 80,
     paddingLeft: 24,
+    position: 'relative',
     paddingRight: 24,
     flexDirection: 'row',
     flexWrap: 'nowrap',
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     elevation: 1,
+    zIndex: 1,
   },
   logo: {
     width: 150,

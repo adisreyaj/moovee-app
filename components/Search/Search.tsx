@@ -4,7 +4,7 @@
  * File Created: Sunday, 24th May 2020 11:04:44 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Sunday, 24th May 2020 11:38:07 pm
+ * Last Modified: Monday, 25th May 2020 11:48:52 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -12,6 +12,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function SearchBar({
   searched,
@@ -30,7 +31,7 @@ export default function SearchBar({
           value={searchTerm}
         />
       </View>
-      <Ionicons name="md-funnel" size={24} color="#444" />
+      <AntDesign name="filter" size={24} color="#444" />
     </View>
   );
 }
