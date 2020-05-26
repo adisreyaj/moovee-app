@@ -4,16 +4,46 @@
  * File Created: Wednesday, 13th May 2020 9:00:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:19:45 pm
+ * Last Modified: Tuesday, 26th May 2020 11:26:16 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React from 'react';
-import { View, Image, StyleSheet, Platform, StatusBar } from 'react-native';
-const Header = ({}) => {
+import React, { useRef, useEffect } from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  Animated,
+  Easing,
+} from 'react-native';
+
+const Header = () => {
+  const headerSlideIn = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(headerSlideIn, {
+      toValue: 100,
+      easing: Easing.bezier(0.17, 0.67, 0.56, 1.03),
+      duration: 1000,
+    }).start();
+  }, []);
   return (
-    <View style={styles.header}>
+    <Animated.View
+      style={{
+        ...styles.header,
+        transform: [
+          {
+            translateY: headerSlideIn.interpolate({
+              inputRange: [0, 100],
+              outputRange: [-50, 0],
+            }),
+          },
+        ],
+      }}
+    >
       <Image
         fadeDuration={500}
         source={require('../../assets/icon.png')}
@@ -27,7 +57,7 @@ const Header = ({}) => {
           source={require('../../assets/avatar.jpg')}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

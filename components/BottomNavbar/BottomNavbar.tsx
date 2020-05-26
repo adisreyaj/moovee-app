@@ -4,18 +4,19 @@
  * File Created: Monday, 25th May 2020 4:00:43 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:57:49 pm
+ * Last Modified: Tuesday, 26th May 2020 11:17:02 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
   Animated,
+  Easing,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../config/colors';
@@ -31,15 +32,17 @@ export default function BottomNavbar() {
   const [currentSelection, setCurrentSelection] = useState(
     BottomNavbarItems.home
   );
-
   const menuItemAnimation = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(menuItemAnimation, {
+      toValue: 100,
+      easing: Easing.bezier(0.17, 0.67, 0.56, 1.03),
+      duration: 1000,
+    }).start();
+  }, []);
 
   const changeMenuSelection = (selection: BottomNavbarItems) => {
     setCurrentSelection(selection);
-    Animated.timing(menuItemAnimation, {
-      toValue: 1,
-      duration: 2000,
-    }).start();
   };
 
   const getMenuItemTextColor = (selection: BottomNavbarItems) => {
@@ -54,14 +57,24 @@ export default function BottomNavbar() {
       : styles.menuItem;
   };
   return (
-    <View style={styles.bottomNavbar}>
-      <TouchableHighlight
+    <Animated.View
+      style={{
+        ...styles.bottomNavbar,
+        transform: [
+          {
+            translateY: menuItemAnimation.interpolate({
+              inputRange: [0, 100],
+              outputRange: [50, 0],
+            }),
+          },
+        ],
+      }}
+    >
+      <TouchableWithoutFeedback
         style={styles.menuItemContainer}
-        activeOpacity={0.8}
-        underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.home)}
       >
-        <Animated.View style={getMenuItemStyles(BottomNavbarItems.home)}>
+        <View style={getMenuItemStyles(BottomNavbarItems.home)}>
           <Ionicons
             name="md-home"
             size={24}
@@ -70,16 +83,14 @@ export default function BottomNavbar() {
           {currentSelection === BottomNavbarItems.home ? (
             <Text style={styles.menuItemLabel}>{BottomNavbarItems.home}</Text>
           ) : null}
-        </Animated.View>
-      </TouchableHighlight>
+        </View>
+      </TouchableWithoutFeedback>
 
-      <TouchableHighlight
+      <TouchableWithoutFeedback
         style={styles.menuItemContainer}
-        activeOpacity={0.8}
-        underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.favorites)}
       >
-        <Animated.View style={getMenuItemStyles(BottomNavbarItems.favorites)}>
+        <View style={getMenuItemStyles(BottomNavbarItems.favorites)}>
           <Ionicons
             name="md-heart"
             size={24}
@@ -90,16 +101,14 @@ export default function BottomNavbar() {
               {BottomNavbarItems.favorites}
             </Text>
           ) : null}
-        </Animated.View>
-      </TouchableHighlight>
+        </View>
+      </TouchableWithoutFeedback>
 
-      <TouchableHighlight
+      <TouchableWithoutFeedback
         style={styles.menuItemContainer}
-        activeOpacity={0.8}
-        underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.explore)}
       >
-        <Animated.View style={getMenuItemStyles(BottomNavbarItems.explore)}>
+        <View style={getMenuItemStyles(BottomNavbarItems.explore)}>
           <Ionicons
             name="ios-apps"
             size={24}
@@ -110,15 +119,13 @@ export default function BottomNavbar() {
               {BottomNavbarItems.explore}
             </Text>
           ) : null}
-        </Animated.View>
-      </TouchableHighlight>
-      <TouchableHighlight
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
         style={styles.menuItemContainer}
-        activeOpacity={0.8}
-        underlayColor={COLORS.primary}
         onPress={() => changeMenuSelection(BottomNavbarItems.settings)}
       >
-        <Animated.View style={getMenuItemStyles(BottomNavbarItems.settings)}>
+        <View style={getMenuItemStyles(BottomNavbarItems.settings)}>
           <Ionicons
             name="md-settings"
             size={24}
@@ -129,9 +136,9 @@ export default function BottomNavbar() {
               {BottomNavbarItems.settings}
             </Text>
           ) : null}
-        </Animated.View>
-      </TouchableHighlight>
-    </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </Animated.View>
   );
 }
 
