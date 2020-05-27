@@ -4,25 +4,26 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:13:05 pm
+ * Last Modified: Wednesday, 27th May 2020 11:43:42 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../config/colors';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 export default function MovieCard({ data }: any) {
+  const { width: deviceW } = Dimensions.get('window');
   return (
     <View style={styles.movieCard}>
       <Image
         resizeMode={'cover'}
         source={{
           width: 300,
-          height: 300,
+          height: deviceW > 500 ? 300 : 200,
           uri: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
         }}
         style={{

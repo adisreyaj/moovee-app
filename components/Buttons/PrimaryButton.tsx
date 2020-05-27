@@ -4,15 +4,16 @@
  * File Created: Wednesday, 13th May 2020 11:28:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 9:40:35 pm
+ * Last Modified: Wednesday, 27th May 2020 11:49:07 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLORS } from '../../config/colors';
 
+const { width: deviceW } = Dimensions.get('window');
 export default function PrimaryButton() {
   return (
     <TouchableOpacity
@@ -20,7 +21,9 @@ export default function PrimaryButton() {
       style={styles.button}
       onPress={() => {}}
     >
-      <Text style={{ color: '#fff', fontSize: 16 }}>Learn More</Text>
+      <Text style={{ color: '#fff', fontSize: deviceW > 450 ? 16 : 14 }}>
+        Learn More
+      </Text>
     </TouchableOpacity>
   );
 }
