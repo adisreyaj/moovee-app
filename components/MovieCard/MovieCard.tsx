@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 27th May 2020 11:43:42 pm
+ * Last Modified: Thursday, 28th May 2020 9:49:36 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -23,7 +23,7 @@ export default function MovieCard({ data }: any) {
         resizeMode={'cover'}
         source={{
           width: 300,
-          height: deviceW > 500 ? 300 : 200,
+          height: deviceW > 400 ? 300 : 200,
           uri: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
         }}
         style={{

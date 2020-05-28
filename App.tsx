@@ -4,7 +4,7 @@
  * File Created: Tuesday, 12th May 2020 12:38:42 am
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:21:21 pm
+ * Last Modified: Thursday, 28th May 2020 11:23:33 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -21,13 +21,15 @@ import {
 import Header from './components/Header/Header';
 import HomePage from './pages/Home';
 import BottomNavbar from './components/BottomNavbar/BottomNavbar';
+import MovieDetail from './pages/MovieDetail/MovieDetail';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
       <ScrollView>
-        <HomePage />
+        {/* <HomePage /> */}
+        <MovieDetail />
       </ScrollView>
       <BottomNavbar />
     </SafeAreaView>

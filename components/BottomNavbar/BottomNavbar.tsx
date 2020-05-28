@@ -4,7 +4,7 @@
  * File Created: Monday, 25th May 2020 4:00:43 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 26th May 2020 11:17:02 pm
+ * Last Modified: Thursday, 28th May 2020 11:04:16 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuItemActive: {
-    backgroundColor: COLORS.accent,
+    backgroundColor: COLORS.primary,
     borderRadius: 60,
   },
   menuItemLabel: {
