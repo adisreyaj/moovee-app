@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 28th May 2020 9:49:36 pm
+ * Last Modified: Saturday, 30th May 2020 1:38:10 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,9 +14,11 @@ import { View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../config/colors';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function MovieCard({ data }: any) {
   const { width: deviceW } = Dimensions.get('window');
+  const navigation = useNavigation();
   return (
     <View style={styles.movieCard}>
       <Image
@@ -42,7 +44,7 @@ export default function MovieCard({ data }: any) {
         <Text style={styles.rating}>{data.vote_average}</Text>
       </View>
       <View style={styles.footer}>
-        <PrimaryButton />
+        <PrimaryButton clicked={() => navigation.navigate('MovieDetail')} />
         <Ionicons name="md-heart" size={24} color="#E2475F" />
       </View>
     </View>

@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 11:28:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 27th May 2020 11:49:07 pm
+ * Last Modified: Saturday, 30th May 2020 1:36:43 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,12 +14,14 @@ import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLORS } from '../../config/colors';
 
 const { width: deviceW } = Dimensions.get('window');
-export default function PrimaryButton() {
+export default function PrimaryButton({ clicked }) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       style={styles.button}
-      onPress={() => {}}
+      onPress={() => {
+        clicked();
+      }}
     >
       <Text style={{ color: '#fff', fontSize: deviceW > 450 ? 16 : 14 }}>
         Learn More

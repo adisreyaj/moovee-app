@@ -4,7 +4,7 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 1:29:24 am
+ * Last Modified: Saturday, 30th May 2020 1:35:11 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -23,7 +23,8 @@ import {
 import SearchBar from '../components/Search/Search';
 import { COLORS } from '../config/colors';
 import Header from '../components/Header/Header';
-export default function HomePage() {
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+export default function HomePage({ navigation }: BottomTabBarProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const searchHandler = (searchText: string) => {
     setSearchTerm(searchText);
