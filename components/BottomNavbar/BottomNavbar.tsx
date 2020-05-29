@@ -4,7 +4,7 @@
  * File Created: Monday, 25th May 2020 4:00:43 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 28th May 2020 11:04:16 pm
+ * Last Modified: Saturday, 30th May 2020 1:28:40 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -19,6 +19,8 @@ import {
   Easing,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { COLORS } from '../../config/colors';
 
 enum BottomNavbarItems {
@@ -28,10 +30,11 @@ enum BottomNavbarItems {
   settings = 'SETTINGS',
 }
 
-export default function BottomNavbar() {
+export default function BottomNavbar({ navigation }: BottomTabBarProps) {
   const [currentSelection, setCurrentSelection] = useState(
     BottomNavbarItems.home
   );
+
   const menuItemAnimation = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     Animated.timing(menuItemAnimation, {
@@ -43,6 +46,7 @@ export default function BottomNavbar() {
 
   const changeMenuSelection = (selection: BottomNavbarItems) => {
     setCurrentSelection(selection);
+    navigation.navigate(selection);
   };
 
   const getMenuItemTextColor = (selection: BottomNavbarItems) => {
