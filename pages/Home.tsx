@@ -4,16 +4,17 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 10:20:11 pm
+ * Last Modified: Friday, 29th May 2020 10:08:36 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React, { useState } from 'react';
 import MovieContainer from '../components/MovieContainer/MovieContainer';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import SearchBar from '../components/Search/Search';
 import { COLORS } from '../config/colors';
+import Header from '../components/Header/Header';
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,22 +23,25 @@ export default function HomePage() {
   };
 
   return (
-    <View
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <Text style={styles.welcomeText}>Hi Maicy,</Text>
-      <Text style={styles.welcomeTextSub}>
-        Find and curate your favorite movies
-      </Text>
-      <SearchBar
-        searched={(searchText: string) => searchHandler(searchText)}
-        searchTerm={searchTerm}
-      />
-      <MovieContainer filter={{ searchTerm }} />
-    </View>
+    <SafeAreaView>
+      <Header />
+      <View
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Text style={styles.welcomeText}>Hi Maicy,</Text>
+        <Text style={styles.welcomeTextSub}>
+          Find and curate your favorite movies
+        </Text>
+        <SearchBar
+          searched={(searchText: string) => searchHandler(searchText)}
+          searchTerm={searchTerm}
+        />
+        <MovieContainer filter={{ searchTerm }} />
+      </View>
+    </SafeAreaView>
   );
 }
 

@@ -4,90 +4,49 @@
  * File Created: Thursday, 28th May 2020 11:15:22 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 28th May 2020 11:56:33 pm
+ * Last Modified: Friday, 29th May 2020 10:36:59 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, ScrollView, Image, StyleSheet, Text } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, ScrollView, StyleSheet, Text, StatusBar } from 'react-native';
+import MovieDetailHeader from './MovieDetailHeader';
+import Constants from 'expo-constants';
+import { TYPOGRAPHY } from '../../config/typography';
 
 export default function MovieDetail() {
   return (
-    <ScrollView>
-      <View style={styles.header}>
-        <View style={styles.headerImage}>
-          <Image
-            source={{
-              uri:
-                'https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._AC_SL1500_.jpg',
-              height: 500,
-            }}
-          />
-        </View>
-        <LinearGradient
-          colors={[
-            'rgba(0,0,0,0.8)',
-            'rgba(0,0,0,0.2)',
-            'transparent',
-            'transparent',
-            'transparent',
-          ]}
-          start={[0.5, 1]}
-          end={[1, 0]}
-          style={styles.headerOverlay}
-        />
-
-        <View style={styles.headerMeta}>
-          <View style={styles.headerMetaSuperSet}>
-            <Text style={styles.headerMetaSuperSetText}>2018</Text>
-            <Text style={styles.headerMetaSuperSetText}>Action</Text>
+    <View style={styles.container}>
+      <StatusBar translucent backgroundColor="rgba(0,0,0,0.7)" />
+      <ScrollView>
+        <MovieDetailHeader />
+        <View
+          style={{
+            paddingTop: 32,
+            paddingHorizontal: 24,
+          }}
+        >
+          <View>
+            <Text style={{ fontSize: 24, fontWeight: '700', marginBottom: 8 }}>
+              Overview
+            </Text>
+            <Text style={{ lineHeight: 20, ...TYPOGRAPHY.body }}>
+              Marcus and Mike are forced to confront new threats, career
+              changes, and midlife crises as they join the newly created elite
+              team AMMO of the Miami police department to take down the ruthless
+              Armando Armas, the vicious leader of a Miami drug cartel.
+            </Text>
           </View>
-          <Text style={styles.movieName}>Avengers End Game</Text>
-          <Text style={styles.movieTagName}>Ride together. Die together.</Text>
-          <Text style={styles.movieDuration}>2h 38min</Text>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    height: 500,
-    position: 'relative',
-  },
-  headerImage: {},
-  headerOverlay: {
-    position: 'absolute',
-    width: '100%',
-    height: 500,
-    zIndex: 2,
-  },
-  headerMeta: {
-    position: 'absolute',
-    paddingHorizontal: 24,
-    bottom: 32,
-    zIndex: 3,
-  },
-  headerMetaSuperSet: {
-    flexDirection: 'row',
-  },
-  headerMetaSuperSetText: {
-    color: '#fff',
-    fontSize: 18,
-    marginRight: 12,
-  },
-  movieName: {
-    fontSize: 42,
-    color: '#fff',
-    fontWeight: '700',
-  },
-  movieTagName: {
-    color: '#fff',
-  },
-  movieDuration: {
-    color: '#fff',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
