@@ -4,7 +4,7 @@
  * File Created: Tuesday, 12th May 2020 12:38:42 am
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 1:21:36 am
+ * Last Modified: Saturday, 30th May 2020 9:21:49 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,12 +14,11 @@ import { StyleSheet, View } from 'react-native';
 import { AppLoading } from 'expo';
 import { loadAsync } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import HomePage from './pages/Home';
-import BottomNavbar from './components/BottomNavbar/BottomNavbar';
-import MovieDetail from './pages/MovieDetail/MovieDetail';
-import FavoritesPage from './pages/Favorites/Favorites';
+import Dashboard from './pages/Dashboard/Dashboard';
+import SignupPage from './pages/Authentication/Signup/Signup';
+import AuthenticationPage from './pages/Authentication/Login/Authentication';
 
 function loadFonts() {
   return loadAsync({
@@ -31,8 +30,7 @@ function loadFonts() {
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-  const Tab = createBottomTabNavigator();
-
+  const Stack = createStackNavigator();
   if (!fontsLoaded)
     return (
       <AppLoading
@@ -45,14 +43,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <Tab.Navigator
-          initialRouteName="Home"
-          tabBar={(props) => <BottomNavbar {...props} />}
-        >
-          <Tab.Screen name="HOME" component={HomePage} />
-          <Tab.Screen name="MovieDetail" component={MovieDetail} />
-          <Tab.Screen name="FAVORITES" component={FavoritesPage} />
-        </Tab.Navigator>
+        <Stack.Navigator initialRouteName="LOGIN" headerMode="none">
+          <Stack.Screen name="MAIN" component={Dashboard} />
+          <Stack.Screen name="LOGIN" component={AuthenticationPage} />
+          <Stack.Screen name="SIGNUP" component={SignupPage} />
+        </Stack.Navigator>
       </View>
     </NavigationContainer>
   );
@@ -61,7 +56,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7f7f7',
-    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
 });

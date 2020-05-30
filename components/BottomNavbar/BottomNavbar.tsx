@@ -4,7 +4,7 @@
  * File Created: Monday, 25th May 2020 4:00:43 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 1:28:40 am
+ * Last Modified: Saturday, 30th May 2020 10:32:14 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -32,7 +32,7 @@ enum BottomNavbarItems {
 
 export default function BottomNavbar({ navigation }: BottomTabBarProps) {
   const [currentSelection, setCurrentSelection] = useState(
-    BottomNavbarItems.home
+    BottomNavbarItems.home,
   );
 
   const menuItemAnimation = useRef(new Animated.Value(0)).current;

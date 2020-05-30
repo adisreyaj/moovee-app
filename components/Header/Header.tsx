@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:00:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 26th May 2020 11:26:16 pm
+ * Last Modified: Saturday, 30th May 2020 11:57:58 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -75,10 +75,9 @@ const styles = StyleSheet.create({
     paddingRight: 24,
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-between',
-    elevation: 1,
     zIndex: 1,
   },
   logo: {
@@ -89,8 +88,8 @@ const styles = StyleSheet.create({
   avatar: {
     borderRadius: 50,
     overflow: 'hidden',
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
   },
 });
 

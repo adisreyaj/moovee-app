@@ -4,13 +4,13 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 1:35:11 am
+ * Last Modified: Saturday, 30th May 2020 11:37:49 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React, { useState } from 'react';
-import MovieContainer from '../components/MovieContainer/MovieContainer';
+import MovieContainer from '../../components/MovieContainer/MovieContainer';
 import {
   View,
   Text,
@@ -20,9 +20,9 @@ import {
   StatusBar,
   ScrollView,
 } from 'react-native';
-import SearchBar from '../components/Search/Search';
-import { COLORS } from '../config/colors';
-import Header from '../components/Header/Header';
+import SearchBar from '../../components/Search/Search';
+import { COLORS } from '../../config/colors';
+import Header from '../../components/Header/Header';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 export default function HomePage({ navigation }: BottomTabBarProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -40,7 +40,7 @@ export default function HomePage({ navigation }: BottomTabBarProps) {
             alignItems: 'center',
           }}
         >
-          <Text style={styles.welcomeText}>Hi Maicy,</Text>
+          <Text style={styles.welcomeText}>Hi Zoya,</Text>
           <Text style={styles.welcomeTextSub}>
             Find and curate your favorite movies
           </Text>
