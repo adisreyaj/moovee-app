@@ -4,7 +4,7 @@
  * File Created: Friday, 29th May 2020 9:33:51 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 8:55:00 pm
+ * Last Modified: Tuesday, 2nd June 2020 9:08:24 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -21,9 +21,10 @@ export default function MovieDetailHeader() {
     <View style={styles.header}>
       <View style={styles.headerImage}>
         <Image
+          style={{ resizeMode: 'cover' }}
           source={{
             uri:
-              'https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._AC_SL1500_.jpg',
+              'https://m.media-amazon.com/images/M/MV5BMzFiODE0ZDUtN2IxNC00OTI5LTg4OWItZTE2MjU4ZTk2NjM5XkEyXkFqcGdeQXVyNDYzODU1ODM@._V1_.jpg',
             height: 420,
           }}
         />

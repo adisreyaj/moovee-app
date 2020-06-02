@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:29:58 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 1:36:02 am
+ * Last Modified: Tuesday, 2nd June 2020 8:31:23 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -28,7 +28,7 @@ export default function MovieContainer({
     const { searchTerm } = filter;
     if (searchTerm) {
       const filteredMovies = mockResponse.results.filter((movie) =>
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       setMovies(filteredMovies);
     } else {

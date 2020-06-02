@@ -4,7 +4,7 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 11:37:49 am
+ * Last Modified: Tuesday, 2nd June 2020 8:23:56 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -32,8 +32,8 @@ export default function HomePage({ navigation }: BottomTabBarProps) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
       <ScrollView>
+        <Header />
         <View
           style={{
             display: 'flex',
