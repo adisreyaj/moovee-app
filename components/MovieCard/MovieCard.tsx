@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 30th May 2020 11:39:31 am
+ * Last Modified: Friday, 5th June 2020 10:52:03 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -44,7 +44,9 @@ export default function MovieCard({ data }: any) {
         <Text style={styles.rating}>{data.vote_average}</Text>
       </View>
       <View style={styles.footer}>
-        <PrimaryButton clicked={() => navigation.navigate('MOVIE_DETAILS')} />
+        <PrimaryButton
+          clicked={() => navigation.navigate('MOVIE_DETAILS', { data })}
+        />
         <Ionicons name="md-heart" size={24} color="#E2475F" />
       </View>
     </View>

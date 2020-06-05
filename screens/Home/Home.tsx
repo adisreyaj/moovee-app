@@ -4,7 +4,7 @@
  * File Created: Sunday, 24th May 2020 11:05:48 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 2nd June 2020 8:23:56 pm
+ * Last Modified: Friday, 5th June 2020 10:48:39 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -58,7 +58,7 @@ export default function HomePage({ navigation }: BottomTabBarProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7f7f7',
+    backgroundColor: COLORS.bgLight,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   welcomeText: {

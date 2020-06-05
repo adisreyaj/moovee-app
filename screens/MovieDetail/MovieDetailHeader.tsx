@@ -4,7 +4,7 @@
  * File Created: Friday, 29th May 2020 9:33:51 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 2nd June 2020 9:08:24 pm
+ * Last Modified: Friday, 5th June 2020 11:09:45 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -15,38 +15,40 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HeartPop from '../../components/HeartPop';
 import { TYPOGRAPHY } from '../../config/typography';
+import { useDispatch } from 'react-redux';
+import { TOGGLE_FAVORITE, toggleFavorite } from '../../store/actions/favorites';
+import { DEVICE_WIDTH, DEVICE_HEIGHT } from '../../config/constants';
 
-export default function MovieDetailHeader() {
+export default function MovieDetailHeader(props) {
+  const dispatch = useDispatch();
+
+  const toggleFavoriteMovie = (movieId: string) => {
+    console.log({ movieId });
+    dispatch(toggleFavorite(movieId));
+  };
+
   return (
     <View style={styles.header}>
       <View style={styles.headerImage}>
         <Image
           style={{ resizeMode: 'cover' }}
+          resizeMode={'cover'}
           source={{
-            uri:
-              'https://m.media-amazon.com/images/M/MV5BMzFiODE0ZDUtN2IxNC00OTI5LTg4OWItZTE2MjU4ZTk2NjM5XkEyXkFqcGdeQXVyNDYzODU1ODM@._V1_.jpg',
-            height: 420,
+            width: DEVICE_WIDTH,
+            height: DEVICE_HEIGHT,
+            uri: `https://image.tmdb.org/t/p/original${props.poster_path}`,
           }}
         />
       </View>
-      <LinearGradient
-        colors={[
-          'rgba(0,0,0,0.8)',
-          'rgba(0,0,0,0.4)',
-          'transparent',
-          'transparent',
-          'transparent',
-        ]}
-        start={[0.5, 1]}
-        end={[1, 0]}
-        style={styles.headerOverlay}
-      />
+
       <View style={styles.headerMeta}>
         <View style={styles.headerMetaSuperSet}>
-          <Text style={styles.headerMetaSuperSetText}>2018</Text>
+          <Text style={styles.headerMetaSuperSetText}>
+            {props.release_date.split('-')[0]}
+          </Text>
           <Text style={styles.headerMetaSuperSetText}>Action</Text>
         </View>
-        <Text style={styles.movieName}>Avengers End Game</Text>
+        <Text style={styles.movieName}>{props.title}</Text>
         <Text style={styles.movieDuration}>2h 38min</Text>
         <View
           style={{
@@ -64,15 +66,17 @@ export default function MovieDetailHeader() {
                   style={{ marginHorizontal: 4 }}
                   name="md-star"
                   size={24}
-                  color={i < 4 ? '#f45d60' : '#f4f4f4'}
+                  color={i < props.vote_average / 2 ? '#f45d60' : '#f4f4f4'}
                 />
               );
             })}
-          <Text style={{ color: 'white', marginLeft: 4 }}>1520 Ratings</Text>
+          <Text style={{ color: 'white', marginLeft: 4 }}>
+            {props.vote_count} Ratings
+          </Text>
         </View>
       </View>
       <View style={styles.favoritesButton}>
-        <HeartPop size={24} />
+        <HeartPop size={24} toggleFavorite={() => toggleFavoriteMovie('123')} />
       </View>
     </View>
   );
@@ -80,7 +84,7 @@ export default function MovieDetailHeader() {
 
 const styles = StyleSheet.create({
   header: {
-    height: 420,
+    height: 700,
   },
   headerImage: {
     zIndex: 0,
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
   headerOverlay: {
     position: 'absolute',
     width: '100%',
-    height: 420,
+    height: 700,
     zIndex: 1,
   },
   headerMeta: {

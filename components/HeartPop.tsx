@@ -4,7 +4,7 @@
  * File Created: Friday, 29th May 2020 8:44:07 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Friday, 29th May 2020 10:38:47 pm
+ * Last Modified: Friday, 5th June 2020 10:14:42 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -19,7 +19,13 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function HeartPop({ size = 24 }: { size: number }) {
+export default function HeartPop({
+  size = 24,
+  toggleFavorite,
+}: {
+  size: number;
+  toggleFavorite: any;
+}) {
   const heartAnimation = useRef(new Animated.Value(0)).current;
   const [hearted, setHearted] = useState(false);
   const styles = StyleSheet.create({
@@ -38,7 +44,6 @@ export default function HeartPop({ size = 24 }: { size: number }) {
   });
 
   const startAnimation = () => {
-    console.log('Hearted');
     setHearted((currentState) => !currentState);
     if (!hearted)
       Animated.sequence([
@@ -52,6 +57,8 @@ export default function HeartPop({ size = 24 }: { size: number }) {
           speed: 2,
         }),
       ]).start();
+
+    toggleFavorite();
   };
 
   return (

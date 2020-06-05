@@ -4,7 +4,7 @@
  * File Created: Wednesday, 13th May 2020 9:29:58 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 3rd June 2020 8:52:16 pm
+ * Last Modified: Friday, 5th June 2020 10:48:57 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,6 +14,7 @@ import { View, Dimensions, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import MovieCard from '../MovieCard/MovieCard';
+import { COLORS } from '../../config/colors';
 const screenHeight = Math.round(Dimensions.get('window').height - 80);
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -48,7 +49,7 @@ export default function MovieContainer({
           paddingRight: 8,
         }}
         style={{
-          backgroundColor: '#f7f7f7',
+          backgroundColor: COLORS.bgLight,
           paddingTop: 16,
           paddingBottom: 16,
           flexGrow: 1,
