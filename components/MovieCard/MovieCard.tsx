@@ -4,25 +4,28 @@
  * File Created: Wednesday, 13th May 2020 9:18:24 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 11:19:24 am
+ * Last Modified: Friday, 5th June 2020 10:52:03 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../../config/colors';
+import { COLORS } from '../../config/colors';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function MovieCard({ data }: any) {
+  const { width: deviceW } = Dimensions.get('window');
+  const navigation = useNavigation();
   return (
     <View style={styles.movieCard}>
       <Image
-        resizeMode={'contain'}
+        resizeMode={'cover'}
         source={{
           width: 300,
-          height: 300,
+          height: deviceW > 400 ? 300 : 200,
           uri: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
         }}
         style={{
@@ -41,7 +44,9 @@ export default function MovieCard({ data }: any) {
         <Text style={styles.rating}>{data.vote_average}</Text>
       </View>
       <View style={styles.footer}>
-        <PrimaryButton />
+        <PrimaryButton
+          clicked={() => navigation.navigate('MOVIE_DETAILS', { data })}
+        />
         <Ionicons name="md-heart" size={24} color="#E2475F" />
       </View>
     </View>
@@ -59,19 +64,19 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   title: {
-    color: colors.textPrimary,
+    color: COLORS.textPrimary,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 8,
     marginBottom: 8,
   },
   date: {
-    color: colors.textSecondary,
+    color: COLORS.textSecondary,
     fontSize: 16,
     marginBottom: 4,
   },
   rating: {
-    color: colors.textSecondary,
+    color: COLORS.textSecondary,
     fontSize: 16,
     marginLeft: 2,
   },

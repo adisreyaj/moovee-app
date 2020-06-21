@@ -4,25 +4,60 @@
  * File Created: Wednesday, 13th May 2020 9:00:06 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 1:56:38 am
+ * Last Modified: Saturday, 30th May 2020 11:57:58 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React from 'react';
-import { View, Image, StyleSheet, Platform, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useRef, useEffect } from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  Animated,
+  Easing,
+} from 'react-native';
 
-const Header = ({ openMenu }) => {
+const Header = () => {
+  const headerSlideIn = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(headerSlideIn, {
+      toValue: 100,
+      easing: Easing.bezier(0.17, 0.67, 0.56, 1.03),
+      duration: 1000,
+    }).start();
+  }, []);
   return (
-    <View style={styles.header}>
+    <Animated.View
+      style={{
+        ...styles.header,
+        transform: [
+          {
+            translateY: headerSlideIn.interpolate({
+              inputRange: [0, 100],
+              outputRange: [-50, 0],
+            }),
+          },
+        ],
+      }}
+    >
       <Image
         fadeDuration={500}
         source={require('../../assets/icon.png')}
         style={styles.logo}
       />
-      <Ionicons name="md-menu" size={24} color="#000" onPress={openMenu} />
-    </View>
+
+      <View>
+        <Image
+          style={styles.avatar}
+          resizeMode={'cover'}
+          source={require('../../assets/avatar.jpg')}
+        />
+      </View>
+    </Animated.View>
   );
 };
 
@@ -40,16 +75,21 @@ const styles = StyleSheet.create({
     paddingRight: 24,
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-between',
-    elevation: 1,
     zIndex: 1,
   },
   logo: {
     width: 150,
     height: 60,
     resizeMode: 'contain',
+  },
+  avatar: {
+    borderRadius: 50,
+    overflow: 'hidden',
+    width: 50,
+    height: 50,
   },
 });
 

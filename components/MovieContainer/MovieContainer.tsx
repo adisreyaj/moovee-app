@@ -4,16 +4,17 @@
  * File Created: Wednesday, 13th May 2020 9:29:58 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 25th May 2020 12:32:38 am
+ * Last Modified: Friday, 5th June 2020 10:48:57 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React, { useState, useEffect } from 'react';
 import { View, Dimensions, FlatList } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import MovieCard from '../MovieCard/MovieCard';
-import { mockResponse } from '../../assets/data';
+import { COLORS } from '../../config/colors';
 const screenHeight = Math.round(Dimensions.get('window').height - 80);
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -22,13 +23,14 @@ export default function MovieContainer({
 }: {
   filter: { searchTerm: string; genres?: string[] };
 }) {
+  const mockResponse = useSelector((state: any) => state.movies.movies);
   const [movies, setMovies] = useState(mockResponse.results);
 
   useEffect(() => {
     const { searchTerm } = filter;
     if (searchTerm) {
-      const filteredMovies = mockResponse.results.filter((movie) =>
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      const filteredMovies = mockResponse.results.filter((movie: any) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       setMovies(filteredMovies);
     } else {
@@ -47,14 +49,15 @@ export default function MovieContainer({
           paddingRight: 8,
         }}
         style={{
-          backgroundColor: '#f7f7f7',
+          backgroundColor: COLORS.bgLight,
           paddingTop: 16,
           paddingBottom: 16,
+          flexGrow: 1,
         }}
         numColumns={2}
         data={movies}
         renderItem={({ item }) => <MovieCard data={item} />}
-        keyExtractor={(item) => `${item.id}`}
+        keyExtractor={(item: any) => `${item.id}`}
       />
     </View>
   );
